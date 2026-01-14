@@ -17,7 +17,7 @@ jobs:
       run: |
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
-        NOTEBOOK_BASE="/Workspace/Users/rodriguez.montero.henry@outlook.com/Proyecto/ETL"
+        NOTEBOOK_BASE="/Workspace/Users/rodriguez.montero.henry@outlook.com/football/Proceso"
         NOTEBOOKS=("Ingest_players_data" "Ingest_clubs_data" "Ingest_games_data" "Load" "Preparacion_Ambiente" "Transform")  
         mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
@@ -32,7 +32,7 @@ jobs:
       run: |
         DEST_HOST=${{ secrets.DATABRICKS_DEST_HOST }}
         DEST_TOKEN=${{ secrets.DATABRICKS_DEST_TOKEN }}
-        DEST_BASE="/proyecto_football/"
+        DEST_BASE="//Production/ETL-FOOTBALL"
         for file in notebooks_to_deploy/*.py; do
           name=$(basename "$file" .py)
           dest_path="$DEST_BASE/$name"
