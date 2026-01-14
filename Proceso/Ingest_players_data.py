@@ -63,10 +63,7 @@ players_schema = StructType(fields=[
 # COMMAND ----------
 
 # DBTITLE 1,Use user specified schema to load df with correct types
-df_players = spark.read
-.option('header', True)\
-.schema(players_schema)\
-.csv(ruta)
+df_players = spark.read.option('header', True).schema(players_schema).csv(ruta)
 
 # COMMAND ----------
 
