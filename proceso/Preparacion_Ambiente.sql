@@ -37,6 +37,7 @@ CREATE SCHEMA IF NOT EXISTS catalog_football.silver;
 CREATE SCHEMA IF NOT EXISTS catalog_football.golden;
 CREATE SCHEMA IF NOT EXISTS catalog_football.exploratory;
 
+
 CREATE VOLUME IF NOT EXISTS catalog_football.raw.datasets;
 
 -- COMMAND ----------
