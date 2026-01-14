@@ -74,7 +74,7 @@ games_schema = StructType(fields=[
     StructField("game_id", IntegerType(), False),
     StructField("competition_id", StringType(), True),
     StructField("season", IntegerType(), True),
-    StructField("round", StringType(), True),
+    StructField("rond", StringType(), True),
     StructField("game_date", DateType(), True),
     StructField("home_club_id", IntegerType(), True),
     StructField("away_club_id", IntegerType(), True),
@@ -92,7 +92,7 @@ games_schema = StructType(fields=[
 
 df_games_selected = df_games.select(col("game_id"),
                                     col("season"),
-                                    col("round"),
+                                    col("rond"),
                                     col("game_date"),
                                     col("home_club_id"),
                                     col("away_club_id"),
