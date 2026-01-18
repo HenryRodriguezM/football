@@ -271,8 +271,8 @@ Workflow: Deploy ETL Apple Sales And Warranty
 ⏱️ Timeout total: 4 horas
  🔒 Max concurrent runs: 1
 ⏰ Notificaciones: 
-      success: isc.ventura@gmail.com
-      failed:  isc.ventura@gmail.com
+      success: rodriguez.montero.henry@outlook.com
+      failed:  rodriguez.montero.henry@outlook.com
 ```
 
 ---
