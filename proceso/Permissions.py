@@ -5,11 +5,6 @@
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC DROP GROUP `Data_Engineers`;
-
-# COMMAND ----------
-
-# MAGIC %sql
 # MAGIC CREATE GROUP `Data_Engineers`;
 
 # COMMAND ----------
@@ -35,7 +30,7 @@
 # MAGIC GRANT ALL PRIVILEGES ON CATALOG catalog_football TO `Data_Engineers`;
 # MAGIC GRANT CREATE, USE SCHEMA ON SCHEMA catalog_football.bronze TO `Data_Engineers`;
 # MAGIC GRANT CREATE, USE SCHEMA ON SCHEMA catalog_football.silver TO `Data_Engineers`;
-# MAGIC GRANT CREATE, USE SCHEMA ON SCHEMA catalog_football.gold TO `Data_Engineers`;
+# MAGIC GRANT CREATE, USE SCHEMA ON SCHEMA catalog_football.golden TO `Data_Engineers`;
 
 # COMMAND ----------
 
