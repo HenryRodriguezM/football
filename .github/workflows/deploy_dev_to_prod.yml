@@ -18,7 +18,7 @@ jobs:
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
         NOTEBOOK_BASE="/Workspace/Users/rodriguez.montero.henry@outlook.com/football/proceso"
-        NOTEBOOKS=("Ingest_players_data" "Ingest_clubs_data" "Ingest_games_data" "Load" "Preparacion_Ambiente" "Transform")  
+        NOTEBOOKS=("Ingest_players_data" "Ingest_clubs_data" "Ingest_games_data" "Load" "Preparacion_Ambiente" "Transform" "Permissions")  
         mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
           echo "Exportando $nb en modo raw..."
@@ -248,6 +248,27 @@ jobs:
               "depends_on": [
                 {
                   "task_key": "Transform"
+                }
+              ]
+            },
+            {
+              "task_key": "Permissions",
+              "description": "Ejecuta notebook Permissions con parámetros",
+              "notebook_task": {
+                "notebook_path": "/Production/ETL-FOOTBALL/Permissions",
+                "source": "WORKSPACE",
+                "base_parameters": {
+                  "catalogo": "catalog_football",
+                  "esquema_source": "silver",
+                  "esquema_sink": "golden"
+                }
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Load"
                 }
               ]
             }
