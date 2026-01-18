@@ -5,6 +5,11 @@
 # COMMAND ----------
 
 # MAGIC %sql
+# MAGIC DROP GROUP `Data_Engineers`;
+
+# COMMAND ----------
+
+# MAGIC %sql
 # MAGIC CREATE GROUP `Data_Engineers`;
 
 # COMMAND ----------
