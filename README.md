@@ -10,7 +10,7 @@
 [![Power BI](https://img.shields.io/badge/PowerBI-F2C811?style=for-the-badge&logo=power-bi&logoColor=black)](https://www.microsoft.com/es-es/power-platform/products/power-bi)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
 
-*Pipeline automatizado de datos para análisis de fútbol con arquitectura de tres capas y despliegue continuo*
+*Pipeline automatizado de datos para análisis de clubes de fútbol con arquitectura de tres capas y despliegue continuo*
 
 </div>
 
@@ -48,7 +48,7 @@ Este proyecto implementa un pipeline ETL completo utilizando la arquitectura Med
 📊 Power BI (Visualización)
 ```
 
-![Texto descriptivo](Arquitectura.png)
+![Texto descriptivo](arquitectura.jpg)
 
 
 ### 📦 Capas del Pipeline
@@ -94,9 +94,9 @@ Este proyecto implementa un pipeline ETL completo utilizando la arquitectura Med
 **Propósito**: Analytics-ready
 
 **Tablas**:
-- dbo.ds_club_performance      : Rendimiento de Clubes por Temporada
-- dbo.ds_player_market         : Valor de Mercado y Perfil de Jugadores
-- dbo.ds_match_analysis        : Análisis de Partidos y Asistencia
+- dbo.tbl_club_performance      : Rendimiento de Clubes por Temporada
+- dbo.tbl_player_market         : Valor de Mercado y Perfil de Jugadores
+- dbo.tbl_match_analysis        : Análisis de Partidos y Asistencia
 
 **Características**:
 - ✅ Pre-agregados
@@ -117,20 +117,19 @@ etl-football/
 │
 ├── 📂 .github/
 │   └── 📂 workflows/
-│       └── 📄 deploy-certification.yml    # Pipeline CI/CD deploy a certification workspace databricks
+│       └── 📄 deploy_dev_to_prod.yml    # Pipeline CI/CD deploy a certification workspace databricks
 ├── 📂 process/
 │   ├── 🐍 Ingest players data.py    # Bronze layer
 │   ├── 🐍 Ingest clubs data.py      # Bronze Layer
 │   ├── 🐍 Ingest games data.py      # Bronze Layer
 │   ├── 🐍 Transform.py              # Silver Layer
 │   └── 🐍 Load.py                   # Gold Layer
-├── 📂 scrips/
-|   ├── 🐍 Preparacion_Ambiente.py    # Create Schema, Tables, External location
+│   └── 🐍 Preparacion_Ambiente.py   # Create Schema, Tables, External location
 ├── 📂 security/
-|   ├── 🐍 Permissions.py               # Sql Grant
+|   ├── 🐍 Permissions.py            # Sql Grant
 ├── 📂 reversion/
 |   ├── 🐍 revoke.py               # Revoke permissions
-├── 📂 dashboards/                 # Databricks Dashboards 
+├── 📂 dashboards/                 # Power BI Dashboards 
 └── 📄 README.md
 ```
 
@@ -172,8 +171,8 @@ etl-football/
 ### 1️⃣ Clonar el Repositorio
 
 ```bash
-git clone https://github.com/guaru/project-databricks.git
-cd project-databricks
+git clone https://github.com/HenryRodriguezM/football.git
+cd football
 ```
 
 ### 2️⃣ Configurar Databricks Token
@@ -198,7 +197,7 @@ Ir al menu del repositorio: **Settings** → **Secrets and variables** → **Act
 ### 4️⃣ Verificar Storage Configuration
 
 ```python
-storage_path = "abfss://raw@adlsmartdata2025.dfs.core.windows.net/"
+storage_path = "abfss://raw@adlsmartdata2026.dfs.core.windows.net/"
 ```
 
 <div align="center">
@@ -220,8 +219,8 @@ git push origin master
 ```
 
 **GitHub Actions ejecutará**:
-- 📤 Deploy de notebooks a `/Production/ETL-APPLE`
-- 🔧 Creación del workflow `WF_PROD_ETL_APPLE_SALES`
+- 📤 Deploy de notebooks a `/Production/ETL-FOOTBALL`
+- 🔧 Creación del workflow `WF_FOOTBALL`
 - ▶️ Ejecución completa:  Bronze → Silver → Gold
 - 📧 Notificaciones de resultados
 
@@ -255,7 +254,7 @@ Navegar a `/Production/ETL-Football` y ejecutar en orden:
 
 ```yaml
 Workflow: Deploy ETL Apple Sales And Warranty
-├── Deploy notebooks → /Production/ETL-APPLE
+├── Deploy notebooks → /Production/ETL-FOOTBALL
 ├── Eliminar workflow antiguo (si existe)
 ├── Buscar cluster configurado
 ├── Crear nuevo workflow con 4 tareas
@@ -264,7 +263,7 @@ Workflow: Deploy ETL Apple Sales And Warranty
 ```
 
 ### 🔄  Workflow Databricks
-![Texto descriptivo](CICD_ETL_APPLE.png)
+![Texto descriptivo](CICD_ETL_FOOTBALL.png)
 ```
 
 
@@ -279,7 +278,7 @@ Workflow: Deploy ETL Apple Sales And Warranty
 ---
 
 ## 📈 Dashboards
-https://github.com/guaru/project-databricks/tree/dev/dashboards
+https://github.com/HenryRodriguezM/football/tree/main/dashboard
 
 ## 🔍 Monitoreo
 
